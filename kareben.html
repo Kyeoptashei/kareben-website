@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>website ni sheraya</title>
+    
+    <style>
+        /* Base Reset at Black Background */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0d0d0d;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Neon Container na may Running Light Card Setup */
+        .neon-container {
+            position: relative;
+            background-color: #121212;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.1);
+        }
+
+        /* MAHIWAGANG RUNNING NEON BORDERS (Apat na Linya Paikot) */
+        .neon-line {
+            position: absolute;
+            display: block;
+        }
+
+        /* 1. Itaas na Linya (Pakaliwa pakanan) */
+        .neon-line:nth-child(1) {
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00ffcc);
+            animation: runTop 2s linear infinite;
+        }
+        @keyframes runTop {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        /* 2. Kanang Linya (Pataas pababa) */
+        .neon-line:nth-child(2) {
+            top: -100%;
+            right: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, #00ffcc);
+            animation: runRight 2s linear infinite;
+            animation-delay: 0.5s;
+        }
+        @keyframes runRight {
+            0% { top: -100%; }
+            50%, 100% { top: 100%; }
+        }
+
+        /* 3. Ibabang Linya (Pakanan pakaliwa) */
+        .neon-line:nth-child(3) {
+            bottom: 0;
+            right: -100%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(270deg, transparent, #00ffcc);
+            animation: runBottom 2s linear infinite;
+            animation-delay: 1s;
+        }
+        @keyframes runBottom {
+            0% { right: -100%; }
+            50%, 100% { right: 100%; }
+        }
+
+        /* 4. Kaliwang Linya (Pababa pataas) */
+        .neon-line:nth-child(4) {
+            bottom: -100%;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(360deg, transparent, #00ffcc);
+            animation: runLeft 2s linear infinite;
+            animation-delay: 1.5s;
+        }
+        @keyframes runLeft {
+            0% { bottom: -100%; }
+            50%, 100% { bottom: 100%; }
+        }
+
+        /* Static Glow para sa back-border para laging may ilaw */
+        .neon-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px solid rgba(0, 255, 204, 0.2);
+            border-radius: 15px;
+            pointer-events: none;
+        }
+
+        /* Neon Text Glow Effect */
+        .neon-container p {
+            color: #00ffcc;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 15px 0;
+            text-shadow: 0 0 5px #00ffcc, 0 0 10px rgba(0, 255, 204, 0.4);
+            font-weight: 500;
+        }
+
+        /* Highlight text */
+        .neon-container p strong {
+            color: #ffffff;
+            text-shadow: 0 0 8px #00ffcc;
+        }
+
+        /* Button Container */
+        .btn-container {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            height: 50px;
+        }
+
+        /* Base Buttons Style */
+        .btn {
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: 2px solid #00ffcc;
+            border-radius: 25px;
+            cursor: pointer;
+            background: transparent;
+            color: #00ffcc;
+            text-shadow: 0 0 5px #00ffcc;
+            box-shadow: 0 0 8px rgba(0, 255, 204, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        /* Yes Button Hover Effect */
+        #yesBtn:hover {
+            background-color: #00ffcc;
+            color: #0d0d0d;
+            text-shadow: none;
+            box-shadow: 0 0 15px #00ffcc, 0 0 25px #00ffcc;
+            transform: scale(1.1);
+        }
+
+        /* No Button - Tumatakas base style */
+        #noBtn {
+            position: absolute;
+            left: 55%; 
+            transition: all 0.1s ease-out;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Container -->
+    <div class="neon-container">
+        <!-- Heto yung apat na linya na gumagalaw paikot sa border -->
+        <span class="neon-line"></span>
+        <span class="neon-line"></span>
+        <span class="neon-line"></span>
+        <span class="neon-line"></span>
+
+        <!-- Ang mga Sweet Messages mo -->
+        <p><strong>hayi carl ravene!</strong></p>
+        <p><strong>miss na miss na kita take care always</strong></p>
+        <p><strong>mahal na mahal kita baby kooo!</strong></p>
+        <p><strong>may ask lang me hehe if okay and be honest mag sagot ha!</strong></p>
+        <p>&nbsp;</p>
+        <p><strong>ask ko lang if mauwe kana hehe</strong></p>
+
+        <!-- Buttons -->
+        <div class="btn-container">
+            <button class="btn" id="yesBtn" onclick="sabogPuso()">Yes</button>
+            <button class="btn" id="noBtn" onmouseover="takasButton()" onclick="takasButton()">No</button>
+        </div>
+    </div>
+
+    <!-- JavaScript logic para sa buttons -->
+    <script>
+        function takasButton() {
+            const noBtn = document.getElementById('noBtn');
+            
+            const padding = 50;
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+            
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        function sabogPuso() {
+            alert("Yayyy! Sabi ko na nga ba uuwi ka na eh! See you soon, baby ko! I love you! 😘❤️");
+        }
+    </script>
+
+</body>
+</html>
